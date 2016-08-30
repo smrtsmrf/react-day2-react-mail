@@ -1,4 +1,5 @@
 import React from "react";
+import {browserHistory} from "react-router";
 
 export default class Draft extends React.Component {
 	render() {
@@ -38,13 +39,20 @@ export default class Draft extends React.Component {
 						style={ styles.draft }
 					/>
 
-					<button style={ styles.sendButton }>
+					<button 
+						onClick={this.sendMessage}
+						style={ styles.sendButton }>
 						Send
 					</button>
 				</form>
 
 			</div>
 		);
+	}
+
+	sendMessage(ev) {
+		ev.preventDefault();
+		browserHistory.push("/inbox");
 	}
 
 	getStyles() {
