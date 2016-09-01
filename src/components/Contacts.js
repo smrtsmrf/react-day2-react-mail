@@ -21,18 +21,12 @@ export default class Contacts extends React.Component {
 	render() {
 		const styles = this.getStyles();
 
-		const contacts = this.state.contacts.map(contact => (
-		     <Link to={`/contacts/${contact._id}`}>
-		     		<Contact
-			     		company={contact.company}
-			     		email={contact.email}
-			     		key={contact._id}
-			     		name={contact.name}
-			     		phone={contact.phone}
-			     	/>
+		const contacts = this.state.contacts.map((contact, idx) => (
+		     <Link to={`/contacts/${contact._id}`} key={idx}>
+		     		<h5>{contact.name}</h5>
 			</Link>
 		))
-
+		
 		return (
 			<div>
 				<h1>Contacts</h1>
@@ -51,6 +45,7 @@ export default class Contacts extends React.Component {
 			contactsWrapper: {
 				display: "flex"
 				, flexWrap: "wrap"
+				, flexDirection: "column"
 				, justifyContent: "space-around"
 			}
 		}

@@ -17,7 +17,7 @@ export default class Message extends React.Component {
 
 	}
 
-	componentWillUpdate(nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.params.messageId !== this.props.params.messageId) {
 			this.getMessage.call(this, nextProps.params.messageId);
 		}
