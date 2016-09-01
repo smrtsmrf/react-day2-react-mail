@@ -1,6 +1,7 @@
 import React from "react";
 import {getContacts} from "../services/contactsService";
 import Contact from "./Contact";
+import {Link} from 'react-router';
 
 export default class Contacts extends React.Component {
 	constructor( props ) {
@@ -21,13 +22,15 @@ export default class Contacts extends React.Component {
 		const styles = this.getStyles();
 
 		const contacts = this.state.contacts.map(contact => (
-		     <Contact
-		     		company={contact.company}
-		     		email={contact.email}
-		     		key={contact._id}
-		     		name={contact.name}
-		     		phone={contact.phone}
-		     	/>
+		     <Link to={`/contacts/${contact._id}`}>
+		     		<Contact
+			     		company={contact.company}
+			     		email={contact.email}
+			     		key={contact._id}
+			     		name={contact.name}
+			     		phone={contact.phone}
+			     	/>
+			</Link>
 		))
 
 		return (
@@ -35,6 +38,9 @@ export default class Contacts extends React.Component {
 				<h1>Contacts</h1>
 				<div style={ styles.contactsWrapper }>
 					{contacts}
+				</div>
+				<div>
+					{this.props.children}
 				</div>
 			</div>
 		);
